@@ -11,3 +11,69 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Perspective container for 3D effects */
+.perspective {
+  perspective: 1000px;
+}
+
+/* The card container */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* General flip class */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Front and back of the card */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+/* The back of the card should be hidden initially */
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Flip direction styles */
+/* .flip-right .card {
+  transform: rotateY(180deg);
+}
+
+.flip-left .card {
+  transform: rotateY(-180deg);
+}
+
+.flip-up .card {
+  transform: rotateX(180deg);
+}
+
+.flip-down .card {
+  transform: rotateX(-180deg);
+}
+
+.flip-up-right .card {
+  transform: rotateX(180deg) rotateY(-180deg);
+}
+
+.flip-up-left .card {
+  transform: rotateX(180deg) rotateY(180deg);
+}
+
+.flip-down-right .card {
+  transform: rotateX(-180deg) rotateY(-180deg);
+}
+
+.flip-down-left .card {
+  transform: rotateX(-180deg) rotateY(180deg);
+} */
