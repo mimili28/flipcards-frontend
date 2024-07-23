@@ -39,14 +39,14 @@ const Card: React.FC<CardProps> = ({ card }) => {
 
     return (
         <div
-            className={`relative aspect-w-3 aspect-h-4 perspective ${flipDirection}`}
+            className={`relative aspect-w-3 aspect-h-4 perspective ${flipDirection} hover:scale-105 transition-transform  hover:cursor-pointer`}
             onClick={handleCardClick}
         >
-    <div className={`card ${isFlipped ? `flipped ${flipDirection}` : flipDirection}`}>
+            <div className={`card ${isFlipped ? `flipped ${flipDirection}` : flipDirection} shadow-lg`}>
                 <div className="card-front">
-                    <img src={card.image} alt={card.id} className="object-cover w-full h-full rounded-sm" />
+                    <img src={card.image} alt={card.id} className="object-cover w-full h-full rounded" />
                 </div>
-                <div className="card-back absolute inset-0 flex items-center justify-center bg-orange-200 border-2 border-orange-300 p-4">
+                <div className="card-back absolute inset-0 flex items-center justify-center bg-orange-200 border-2 border-orange-300 p-4 rounded">
                     <p className='text-center text-xl font-bold text-white'>{card.description}</p>
                 </div>
             </div>
