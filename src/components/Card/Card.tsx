@@ -10,27 +10,29 @@ const Card: React.FC<CardProps> = ({ card }) => {
         const { left, top, width, height } = currentTarget.getBoundingClientRect();
         const clickX = clientX - left;
         const clickY = clientY - top;
-        const centerX = width / 2;
-        const centerY = height / 2;
+        const centerX = width / 3;
+        const centerY = height / 3;
 
         let direction = '';
 
         if (clickX < centerX && clickY < centerY) {
-            direction = 'flip-up-left'; // Top-left diagonal
-        } else if (clickX >= centerX && clickY < centerY) {
-            direction = 'flip-up-right'; // Top-right diagonal
-        } else if (clickX < centerX && clickY >= centerY) {
-            direction = 'flip-down-left'; // Bottom-left diagonal
-        } else if (clickX >= centerX && clickY >= centerY) {
-            direction = 'flip-down-right'; // Bottom-right diagonal
-        } else if (clickX < centerX) {
-            direction = 'flip-left'; // Left
-        } else if (clickX >= centerX) {
-            direction = 'flip-right'; // Right
-        } else if (clickY < centerY) {
-            direction = 'flip-up'; // Up
-        } else if (clickY >= centerY) {
-            direction = 'flip-down'; // Down
+            direction = 'flip-up-left'; // Top-left square
+        } else if (clickX >= centerX && clickX < 2 * centerX && clickY < centerY) {
+            direction = 'flip-up'; // Top-middle square
+        } else if (clickX >= 2 * centerX && clickY < centerY) {
+            direction = 'flip-up-right'; // Top-right square
+        } else if (clickX < centerX && clickY >= centerY && clickY < 2 * centerY) {
+            direction = 'flip-left'; // Middle-left square
+        } else if (clickX >= centerX && clickX < 2 * centerX && clickY >= centerY && clickY < 2 * centerY) {
+            direction = 'flip'; // Middle square
+        } else if (clickX >= 2 * centerX && clickY >= centerY && clickY < 2 * centerY) {
+            direction = 'flip-right'; // Middle-right square
+        } else if (clickX < centerX && clickY >= 2 * centerY) {
+            direction = 'flip-down-left'; // Bottom-left square
+        } else if (clickX >= centerX && clickX < 2 * centerX && clickY >= 2 * centerY) {
+            direction = 'flip-down'; // Bottom-middle square
+        } else if (clickX >= 2 * centerX && clickY >= 2 * centerY) {
+            direction = 'flip-down-right'; // Bottom-right square
         }
 
         setFlipDirection(direction);
